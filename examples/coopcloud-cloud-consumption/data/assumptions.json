@@ -1,0 +1,551 @@
+{
+  "project": "CoopCloud — Digitization of Moroccan agricultural cooperatives (fictional)",
+  "spec_version": "1.0",
+  "currency": "MAD",
+  "assumption_status": "hypothetical",
+  "processes": [
+    {
+      "id": "P01",
+      "name": "API Gateway",
+      "group": "API & identity",
+      "replicas": 2,
+      "vcpu_each": 0.5,
+      "ram_gib_each": 0.75,
+      "purpose": "Public API entry; auth context and routing"
+    },
+    {
+      "id": "P02",
+      "name": "Identity Service",
+      "group": "API & identity",
+      "replicas": 2,
+      "vcpu_each": 0.5,
+      "ram_gib_each": 1,
+      "purpose": "Role-based access for members and buyers"
+    },
+    {
+      "id": "P03",
+      "name": "Farmer Registry",
+      "group": "Cooperative operations",
+      "replicas": 2,
+      "vcpu_each": 0.5,
+      "ram_gib_each": 1,
+      "purpose": "Farm, producer and cooperative identity records"
+    },
+    {
+      "id": "P04",
+      "name": "Offline Sync Intake",
+      "group": "Cooperative operations",
+      "replicas": 3,
+      "vcpu_each": 1,
+      "ram_gib_each": 1.5,
+      "purpose": "Validate and synchronize mobile batches"
+    },
+    {
+      "id": "P05",
+      "name": "Lot Traceability",
+      "group": "Cooperative operations",
+      "replicas": 2,
+      "vcpu_each": 1,
+      "ram_gib_each": 2,
+      "purpose": "Create traceable production lots and certificates"
+    },
+    {
+      "id": "P06",
+      "name": "Quality & OCR Workflow",
+      "group": "Cooperative operations",
+      "replicas": 2,
+      "vcpu_each": 1.5,
+      "ram_gib_each": 2,
+      "purpose": "Validate submitted certification files; invoke OCR"
+    },
+    {
+      "id": "P07",
+      "name": "Inventory Allocation",
+      "group": "Commerce & fulfillment",
+      "replicas": 2,
+      "vcpu_each": 1,
+      "ram_gib_each": 1.5,
+      "purpose": "Available-to-promise inventory, reservations"
+    },
+    {
+      "id": "P08",
+      "name": "Buyer Orders",
+      "group": "Commerce & fulfillment",
+      "replicas": 2,
+      "vcpu_each": 1,
+      "ram_gib_each": 1.5,
+      "purpose": "Order lifecycle and approvals"
+    },
+    {
+      "id": "P09",
+      "name": "Payment Reconciliation",
+      "group": "Commerce & fulfillment",
+      "replicas": 2,
+      "vcpu_each": 0.5,
+      "ram_gib_each": 1,
+      "purpose": "Match externally confirmed transfers to invoices"
+    },
+    {
+      "id": "P10",
+      "name": "Dispatch & Routing",
+      "group": "Commerce & fulfillment",
+      "replicas": 2,
+      "vcpu_each": 1,
+      "ram_gib_each": 1.5,
+      "purpose": "Dispatch lots and transport tracking"
+    },
+    {
+      "id": "P11",
+      "name": "AI Advisory Gateway",
+      "group": "AI & intelligence",
+      "replicas": 2,
+      "vcpu_each": 0.75,
+      "ram_gib_each": 1.5,
+      "purpose": "Bounded RAG/LLM crop and logistics advisory"
+    },
+    {
+      "id": "P12",
+      "name": "Analytics & Forecast",
+      "group": "AI & intelligence",
+      "replicas": 1,
+      "vcpu_each": 2,
+      "ram_gib_each": 4,
+      "purpose": "Aggregate analytics and scheduled CPU-based forecasting"
+    },
+    {
+      "id": "P13",
+      "name": "Notifications",
+      "group": "Communications",
+      "replicas": 2,
+      "vcpu_each": 0.5,
+      "ram_gib_each": 0.75,
+      "purpose": "Email/SMS/webhook integration and retries"
+    }
+  ],
+  "flows": [
+    {
+      "id": "F01",
+      "source": "X01",
+      "target": "P01",
+      "payload_kib": 12,
+      "normal_rps": 2,
+      "peak_rps": 8,
+      "latency_p95_ms": 450,
+      "protocol": "HTTPS",
+      "security": "TLS",
+      "notes": "Farmer synchronization via intermittently connected mobile"
+    },
+    {
+      "id": "F02",
+      "source": "X02",
+      "target": "P01",
+      "payload_kib": 3,
+      "normal_rps": 10,
+      "peak_rps": 40,
+      "latency_p95_ms": 350,
+      "protocol": "HTTPS",
+      "security": "TLS",
+      "notes": "Buyer page and API request"
+    },
+    {
+      "id": "F03",
+      "source": "P01",
+      "target": "P02",
+      "payload_kib": 1.5,
+      "normal_rps": 4,
+      "peak_rps": 16,
+      "latency_p95_ms": 100,
+      "protocol": "gRPC",
+      "security": "mTLS",
+      "notes": "Authentication and session claims"
+    },
+    {
+      "id": "F04",
+      "source": "P01",
+      "target": "P03",
+      "payload_kib": 1,
+      "normal_rps": 1,
+      "peak_rps": 4,
+      "latency_p95_ms": 150,
+      "protocol": "HTTPS",
+      "security": "mTLS",
+      "notes": "Registry lookup"
+    },
+    {
+      "id": "F05",
+      "source": "P01",
+      "target": "P04",
+      "payload_kib": 12,
+      "normal_rps": 2,
+      "peak_rps": 8,
+      "latency_p95_ms": 300,
+      "protocol": "HTTPS",
+      "security": "mTLS",
+      "notes": "Offline batch to sync intake"
+    },
+    {
+      "id": "F06",
+      "source": "P04",
+      "target": "P05",
+      "payload_kib": 6,
+      "normal_rps": 1.5,
+      "peak_rps": 6,
+      "latency_p95_ms": 250,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Validated harvest updates"
+    },
+    {
+      "id": "F07",
+      "source": "P05",
+      "target": "P06",
+      "payload_kib": 256,
+      "normal_rps": 0.1,
+      "peak_rps": 0.4,
+      "latency_p95_ms": 650,
+      "protocol": "HTTPS",
+      "security": "mTLS",
+      "notes": "Quality dossier attachment"
+    },
+    {
+      "id": "F08",
+      "source": "P06",
+      "target": "P05",
+      "payload_kib": 2,
+      "normal_rps": 0.1,
+      "peak_rps": 0.4,
+      "latency_p95_ms": 500,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Parsed quality result"
+    },
+    {
+      "id": "F09",
+      "source": "P05",
+      "target": "P07",
+      "payload_kib": 2,
+      "normal_rps": 2,
+      "peak_rps": 8,
+      "latency_p95_ms": 200,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "New/changed lot inventory event"
+    },
+    {
+      "id": "F10",
+      "source": "P01",
+      "target": "P08",
+      "payload_kib": 3,
+      "normal_rps": 3,
+      "peak_rps": 12,
+      "latency_p95_ms": 300,
+      "protocol": "HTTPS",
+      "security": "mTLS",
+      "notes": "Buyer order command"
+    },
+    {
+      "id": "F11",
+      "source": "P08",
+      "target": "P07",
+      "payload_kib": 2,
+      "normal_rps": 3,
+      "peak_rps": 12,
+      "latency_p95_ms": 170,
+      "protocol": "gRPC",
+      "security": "mTLS",
+      "notes": "Inventory reservation"
+    },
+    {
+      "id": "F12",
+      "source": "P08",
+      "target": "P09",
+      "payload_kib": 2,
+      "normal_rps": 0.6,
+      "peak_rps": 2.4,
+      "latency_p95_ms": 400,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Invoice and settlement instruction"
+    },
+    {
+      "id": "F13",
+      "source": "P08",
+      "target": "P10",
+      "payload_kib": 4,
+      "normal_rps": 0.6,
+      "peak_rps": 2.4,
+      "latency_p95_ms": 450,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Dispatch request"
+    },
+    {
+      "id": "F14",
+      "source": "P10",
+      "target": "P13",
+      "payload_kib": 1,
+      "normal_rps": 0.8,
+      "peak_rps": 3.2,
+      "latency_p95_ms": 300,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Dispatch status notification"
+    },
+    {
+      "id": "F15",
+      "source": "P09",
+      "target": "P13",
+      "payload_kib": 1,
+      "normal_rps": 0.6,
+      "peak_rps": 2.4,
+      "latency_p95_ms": 250,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Payment status notification"
+    },
+    {
+      "id": "F16",
+      "source": "P01",
+      "target": "P11",
+      "payload_kib": 8,
+      "normal_rps": 0.5,
+      "peak_rps": 2,
+      "latency_p95_ms": 500,
+      "protocol": "HTTPS",
+      "security": "mTLS",
+      "notes": "AI advisory conversation request"
+    },
+    {
+      "id": "F17",
+      "source": "P11",
+      "target": "X03",
+      "payload_kib": 12,
+      "normal_rps": 0.75,
+      "peak_rps": 3,
+      "latency_p95_ms": 2500,
+      "protocol": "HTTPS",
+      "security": "TLS",
+      "notes": "Hosted model invocation; no raw identity fields"
+    },
+    {
+      "id": "F18",
+      "source": "P11",
+      "target": "P05",
+      "payload_kib": 4,
+      "normal_rps": 0.5,
+      "peak_rps": 2,
+      "latency_p95_ms": 300,
+      "protocol": "gRPC",
+      "security": "mTLS",
+      "notes": "Authorized read-only lot summary"
+    },
+    {
+      "id": "F19",
+      "source": "P05",
+      "target": "P12",
+      "payload_kib": 25,
+      "normal_rps": 0.05,
+      "peak_rps": 0.2,
+      "latency_p95_ms": 900,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Aggregated data for forecasting"
+    },
+    {
+      "id": "F20",
+      "source": "P08",
+      "target": "P12",
+      "payload_kib": 6,
+      "normal_rps": 0.05,
+      "peak_rps": 0.2,
+      "latency_p95_ms": 900,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Order analytics feed"
+    },
+    {
+      "id": "F21",
+      "source": "P12",
+      "target": "P11",
+      "payload_kib": 4,
+      "normal_rps": 0.05,
+      "peak_rps": 0.2,
+      "latency_p95_ms": 450,
+      "protocol": "gRPC",
+      "security": "mTLS",
+      "notes": "Read-only forecast digest"
+    },
+    {
+      "id": "F22",
+      "source": "P12",
+      "target": "P01",
+      "payload_kib": 3,
+      "normal_rps": 0.4,
+      "peak_rps": 1.6,
+      "latency_p95_ms": 300,
+      "protocol": "HTTPS",
+      "security": "mTLS",
+      "notes": "Dashboard analytical result"
+    },
+    {
+      "id": "F23",
+      "source": "P06",
+      "target": "X04",
+      "payload_kib": 256,
+      "normal_rps": 0.1,
+      "peak_rps": 0.4,
+      "latency_p95_ms": 3500,
+      "protocol": "HTTPS",
+      "security": "TLS",
+      "notes": "External OCR request for scanned dossier"
+    },
+    {
+      "id": "F24",
+      "source": "P03",
+      "target": "P13",
+      "payload_kib": 1,
+      "normal_rps": 0.2,
+      "peak_rps": 0.8,
+      "latency_p95_ms": 300,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Producer onboarding message"
+    },
+    {
+      "id": "F25",
+      "source": "P11",
+      "target": "P13",
+      "payload_kib": 1,
+      "normal_rps": 0.1,
+      "peak_rps": 0.4,
+      "latency_p95_ms": 450,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Approved advisory follow-up"
+    },
+    {
+      "id": "F26",
+      "source": "P05",
+      "target": "S01",
+      "payload_kib": 2,
+      "normal_rps": 2,
+      "peak_rps": 8,
+      "latency_p95_ms": 160,
+      "protocol": "SQL",
+      "security": "TLS",
+      "notes": "Lot persistence (logical write payload, not DB replication)"
+    },
+    {
+      "id": "F27",
+      "source": "P08",
+      "target": "S01",
+      "payload_kib": 2,
+      "normal_rps": 3,
+      "peak_rps": 12,
+      "latency_p95_ms": 160,
+      "protocol": "SQL",
+      "security": "TLS",
+      "notes": "Order persistence"
+    },
+    {
+      "id": "F28",
+      "source": "P06",
+      "target": "S02",
+      "payload_kib": 256,
+      "normal_rps": 0.1,
+      "peak_rps": 0.4,
+      "latency_p95_ms": 900,
+      "protocol": "HTTPS",
+      "security": "TLS",
+      "notes": "Quality document object-store transfer"
+    },
+    {
+      "id": "F29",
+      "source": "P04",
+      "target": "S03",
+      "payload_kib": 12,
+      "normal_rps": 2,
+      "peak_rps": 8,
+      "latency_p95_ms": 180,
+      "protocol": "AMQP",
+      "security": "mTLS",
+      "notes": "Durable intake queue"
+    },
+    {
+      "id": "F30",
+      "source": "P02",
+      "target": "S01",
+      "payload_kib": 1,
+      "normal_rps": 4,
+      "peak_rps": 16,
+      "latency_p95_ms": 160,
+      "protocol": "SQL",
+      "security": "TLS",
+      "notes": "Identity and role lookup"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SC-base",
+      "label": "Illustrative pilot average",
+      "peak_factor": 1,
+      "window": "30.4 days",
+      "description": "Service minimum replicas at assumed average traffic"
+    },
+    {
+      "id": "SC-peak",
+      "label": "Harvest week peak",
+      "peak_factor": 4,
+      "window": "2 hours/day for 7 days",
+      "description": "Peak rates already listed per flow; queue backpressure monitored"
+    },
+    {
+      "id": "SC-failure",
+      "label": "Single replica or service-zone failure",
+      "peak_factor": 1,
+      "window": "event driven",
+      "description": "N+1 / recovery analysis; P12 single instance has an explicit availability gap"
+    },
+    {
+      "id": "SC-growth",
+      "label": "Threefold cooperative adoption",
+      "peak_factor": 3,
+      "window": "six-month planning horizon",
+      "description": "Re-measure demand and re-size replicas; no linear price promise"
+    }
+  ],
+  "cost_rates": {
+    "hours_per_month": 730,
+    "vcpu_mad_per_hour": 1.3,
+    "ram_mad_per_gib_hour": 0.16,
+    "wire_factor": 1.2,
+    "target_link_utilization": 0.65,
+    "ai_sessions_month": 30000,
+    "ai_calls_per_session": 1.4,
+    "ai_input_tokens_call": 1300,
+    "ai_output_tokens_call": 350,
+    "ai_input_mad_per_million": 12.0,
+    "ai_output_mad_per_million": 42.0,
+    "ocr_docs_month": 3000,
+    "ocr_mad_per_doc": 0.12,
+    "fixed_monthly_mad": {
+      "Managed relational DB": 3200,
+      "Queue & cache services": 1150,
+      "Object storage & backup": 550,
+      "Telemetry & audit retention": 1350,
+      "Networking / external egress": 850,
+      "CI/CD runners & scanning": 800,
+      "Embedding / retrieval index": 380
+    }
+  },
+  "excluded_costs": [
+    "Software development and labor",
+    "SMS/email per-message fees",
+    "Payment-provider transaction fees",
+    "End-user mobile data costs",
+    "Local VAT/taxes",
+    "Device procurement",
+    "Regulatory compliance/legal reviews",
+    "Provider credit/discounts not modeled"
+  ]
+}

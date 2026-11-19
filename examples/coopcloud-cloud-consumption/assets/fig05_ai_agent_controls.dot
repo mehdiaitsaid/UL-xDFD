@@ -1,0 +1,30 @@
+digraph G { graph [rankdir=LR,pad=.3,nodesep=.65,ranksep=.85,labelloc=t,label="CoopCloud | AI advisory: data, tools, permissions and usage-cost trace",fontname="DejaVu Sans",fontsize=20,fontcolor="#174a76",bgcolor=white];node [shape=box,style="rounded,filled",fillcolor="#eef7fc",fontname="DejaVu Sans",fontsize=12,margin=".25,.22"];edge [fontname="DejaVu Sans",fontsize=10,color="#63899d"];
+AGENT1 [label="AGENT1
+Crop advisory agent",fillcolor="#edf2ff"];
+P11 [label="P11
+Agent orchestration
+1.5 vCPU | 3 GiB",fillcolor="#edf2ff"];
+TOOL1 [label="TOOL1
+Read inventory",fillcolor="#e8f5ee"];
+MODELSVC1 [label="MODELSVC1
+Hosted LLM endpoint",fillcolor="#edf2ff"];
+SAFE1 [label="SAFE1
+Read-only policy",fillcolor="#f6eee5"];
+HITL1 [label="HITL1
+Approve external advice",fillcolor="#f6eee5"];
+AICHARGE1 [label="AICHARGE1
+Token usage ledger",fillcolor="#edf2ff"];
+CC01 [label="CC01
+AI and platform cost center",fillcolor="#edf2ff"];
+P05 [label="P05
+Lot traceability
+2 vCPU | 4 GiB",fillcolor="#e8f5ee"];
+P11 -> AGENT1 [label="orchestrates",style=solid];
+AGENT1 -> TOOL1 [label="TOOLCALL",style=solid];
+TOOL1 -> P05 [label="reads only",style=solid];
+AGENT1 -> MODELSVC1 [label="INVOKES",style=solid];
+SAFE1 -> TOOL1 [label="POLICY",style=dashed];
+HITL1 -> AGENT1 [label="POLICY",style=dashed];
+MODELSVC1 -> AICHARGE1 [label="metered usage",style=dashed];
+AICHARGE1 -> CC01 [label="AICOST",style=solid];
+}

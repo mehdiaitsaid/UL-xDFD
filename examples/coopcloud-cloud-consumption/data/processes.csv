@@ -1,0 +1,14 @@
+id,name,group,replicas,vcpu_each,ram_gib_each,total_vcpu,total_ram_gib,purpose
+P01,API Gateway,API & identity,2,0.5,0.75,1.0,1.5,Public API entry; auth context and routing
+P02,Identity Service,API & identity,2,0.5,1,1.0,2,Role-based access for members and buyers
+P03,Farmer Registry,Cooperative operations,2,0.5,1,1.0,2,"Farm, producer and cooperative identity records"
+P04,Offline Sync Intake,Cooperative operations,3,1,1.5,3,4.5,Validate and synchronize mobile batches
+P05,Lot Traceability,Cooperative operations,2,1,2,2,4,Create traceable production lots and certificates
+P06,Quality & OCR Workflow,Cooperative operations,2,1.5,2,3.0,4,Validate submitted certification files; invoke OCR
+P07,Inventory Allocation,Commerce & fulfillment,2,1,1.5,2,3.0,"Available-to-promise inventory, reservations"
+P08,Buyer Orders,Commerce & fulfillment,2,1,1.5,2,3.0,Order lifecycle and approvals
+P09,Payment Reconciliation,Commerce & fulfillment,2,0.5,1,1.0,2,Match externally confirmed transfers to invoices
+P10,Dispatch & Routing,Commerce & fulfillment,2,1,1.5,2,3.0,Dispatch lots and transport tracking
+P11,AI Advisory Gateway,AI & intelligence,2,0.75,1.5,1.5,3.0,Bounded RAG/LLM crop and logistics advisory
+P12,Analytics & Forecast,AI & intelligence,1,2,4,2,4,Aggregate analytics and scheduled CPU-based forecasting
+P13,Notifications,Communications,2,0.5,0.75,1.0,1.5,Email/SMS/webhook integration and retries

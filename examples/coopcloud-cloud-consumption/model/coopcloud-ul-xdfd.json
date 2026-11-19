@@ -1,0 +1,6274 @@
+{
+  "spec_version": "1.0",
+  "metadata": {
+    "id": "coopcloud-morocco-synthetic-cloud-v1",
+    "name": "CoopCloud — Agricultural Cooperative Digitization (synthetic)",
+    "revision": 1,
+    "status": "hypothetical",
+    "date": "2026-11-19"
+  },
+  "phases": [
+    {
+      "id": "L00",
+      "label": "Idea / opportunity"
+    },
+    {
+      "id": "L01",
+      "label": "Discovery / feasibility"
+    },
+    {
+      "id": "L02",
+      "label": "Requirements / planning"
+    },
+    {
+      "id": "L03",
+      "label": "Architecture / design"
+    },
+    {
+      "id": "L04",
+      "label": "Acquisition / sourcing"
+    },
+    {
+      "id": "L05",
+      "label": "Build / implementation"
+    },
+    {
+      "id": "L06",
+      "label": "Verification / validation"
+    },
+    {
+      "id": "L07",
+      "label": "Integration / release"
+    },
+    {
+      "id": "L08",
+      "label": "Deployment / transition"
+    },
+    {
+      "id": "L09",
+      "label": "Operate / support"
+    },
+    {
+      "id": "L10",
+      "label": "Improve / evolve"
+    },
+    {
+      "id": "L11",
+      "label": "Retirement / disposal"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SC-base",
+      "environment": "simulation",
+      "phase_id": "L09",
+      "label": "Illustrative pilot average",
+      "window": "30.4 days",
+      "assumptions": {
+        "description": "Service minimum replicas at assumed average traffic",
+        "load_factor": 1
+      }
+    },
+    {
+      "id": "SC-peak",
+      "environment": "simulation",
+      "phase_id": "L09",
+      "label": "Harvest week peak",
+      "window": "2 hours/day for 7 days",
+      "assumptions": {
+        "description": "Peak rates already listed per flow; queue backpressure monitored",
+        "load_factor": 4
+      }
+    },
+    {
+      "id": "SC-failure",
+      "environment": "simulation",
+      "phase_id": "L09",
+      "label": "Single replica or service-zone failure",
+      "window": "event driven",
+      "assumptions": {
+        "description": "N+1 / recovery analysis; P12 single instance has an explicit availability gap",
+        "load_factor": 1
+      }
+    },
+    {
+      "id": "SC-growth",
+      "environment": "simulation",
+      "phase_id": "L09",
+      "label": "Threefold cooperative adoption",
+      "window": "six-month planning horizon",
+      "assumptions": {
+        "description": "Re-measure demand and re-size replicas; no linear price promise",
+        "load_factor": 3
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": "P01",
+      "type": "P",
+      "label": "API Gateway",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P02",
+      "type": "P",
+      "label": "Identity Service",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P03",
+      "type": "P",
+      "label": "Farmer Registry",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P04",
+      "type": "P",
+      "label": "Offline Sync Intake",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P05",
+      "type": "P",
+      "label": "Lot Traceability",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P06",
+      "type": "P",
+      "label": "Quality & OCR Workflow",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P07",
+      "type": "P",
+      "label": "Inventory Allocation",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P08",
+      "type": "P",
+      "label": "Buyer Orders",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P09",
+      "type": "P",
+      "label": "Payment Reconciliation",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P10",
+      "type": "P",
+      "label": "Dispatch & Routing",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P11",
+      "type": "P",
+      "label": "AI Advisory Gateway",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P12",
+      "type": "P",
+      "label": "Analytics & Forecast",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "P13",
+      "type": "P",
+      "label": "Notifications",
+      "phase_ids": [
+        "L03",
+        "L05",
+        "L08",
+        "L09"
+      ]
+    },
+    {
+      "id": "X01",
+      "type": "X",
+      "label": "Farmer phone, offline-first",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "X02",
+      "type": "X",
+      "label": "Buyer portal",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "X03",
+      "type": "X",
+      "label": "External hosted LLM provider",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "X04",
+      "type": "X",
+      "label": "External OCR provider",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "S01",
+      "type": "S",
+      "label": "Relational database",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "S02",
+      "type": "S",
+      "label": "Encrypted object storage",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "S03",
+      "type": "S",
+      "label": "Durable message queue",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "AGENT01",
+      "type": "AGENT",
+      "label": "Bounded cooperative advisor",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "MODEL01",
+      "type": "MODEL",
+      "label": "External model (provider and exact version to be selected)",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "MODELSVC01",
+      "type": "MODELSVC",
+      "label": "Hosted inference service",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "TOOL01",
+      "type": "TOOL",
+      "label": "Read-only lot lookup",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "SAFE01",
+      "type": "SAFE",
+      "label": "Agent read-only and data minimization controls",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "HITL01",
+      "type": "HITL",
+      "label": "Approve farmer-facing high-impact advice",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "AICHARGE01",
+      "type": "AICHARGE",
+      "label": "Token charge ledger",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "RES01",
+      "type": "RES",
+      "label": "Shared container compute pool",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "CC01",
+      "type": "CC",
+      "label": "Cooperative platform cost center",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "TEAM01",
+      "type": "TEAM",
+      "label": "Platform and data operations",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "PIPE01",
+      "type": "PIPE",
+      "label": "Secure CI/CD pipeline",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "ENV01",
+      "type": "ENV",
+      "label": "Synthetic cloud pilot",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "REQ01",
+      "type": "REQ",
+      "label": "Peak link capacity / p95 hop latency targets",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "OUT01",
+      "type": "OUT",
+      "label": "Verified completed lot or order outcome",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "F01",
+      "type": "DATA",
+      "source": "X01",
+      "target": "P01",
+      "label": "Farmer synchronization via intermittently connected mobile",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F02",
+      "type": "DATA",
+      "source": "X02",
+      "target": "P01",
+      "label": "Buyer page and API request",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F03",
+      "type": "DATA",
+      "source": "P01",
+      "target": "P02",
+      "label": "Authentication and session claims",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F04",
+      "type": "DATA",
+      "source": "P01",
+      "target": "P03",
+      "label": "Registry lookup",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F05",
+      "type": "DATA",
+      "source": "P01",
+      "target": "P04",
+      "label": "Offline batch to sync intake",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F06",
+      "type": "DATA",
+      "source": "P04",
+      "target": "P05",
+      "label": "Validated harvest updates",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F07",
+      "type": "DATA",
+      "source": "P05",
+      "target": "P06",
+      "label": "Quality dossier attachment",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F08",
+      "type": "DATA",
+      "source": "P06",
+      "target": "P05",
+      "label": "Parsed quality result",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F09",
+      "type": "DATA",
+      "source": "P05",
+      "target": "P07",
+      "label": "New/changed lot inventory event",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F10",
+      "type": "DATA",
+      "source": "P01",
+      "target": "P08",
+      "label": "Buyer order command",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F11",
+      "type": "DATA",
+      "source": "P08",
+      "target": "P07",
+      "label": "Inventory reservation",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F12",
+      "type": "DATA",
+      "source": "P08",
+      "target": "P09",
+      "label": "Invoice and settlement instruction",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F13",
+      "type": "DATA",
+      "source": "P08",
+      "target": "P10",
+      "label": "Dispatch request",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F14",
+      "type": "DATA",
+      "source": "P10",
+      "target": "P13",
+      "label": "Dispatch status notification",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F15",
+      "type": "DATA",
+      "source": "P09",
+      "target": "P13",
+      "label": "Payment status notification",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F16",
+      "type": "DATA",
+      "source": "P01",
+      "target": "P11",
+      "label": "AI advisory conversation request",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F17",
+      "type": "DATA",
+      "source": "P11",
+      "target": "X03",
+      "label": "Hosted model invocation; no raw identity fields",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F18",
+      "type": "DATA",
+      "source": "P11",
+      "target": "P05",
+      "label": "Authorized read-only lot summary",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F19",
+      "type": "DATA",
+      "source": "P05",
+      "target": "P12",
+      "label": "Aggregated data for forecasting",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F20",
+      "type": "DATA",
+      "source": "P08",
+      "target": "P12",
+      "label": "Order analytics feed",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F21",
+      "type": "DATA",
+      "source": "P12",
+      "target": "P11",
+      "label": "Read-only forecast digest",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F22",
+      "type": "DATA",
+      "source": "P12",
+      "target": "P01",
+      "label": "Dashboard analytical result",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F23",
+      "type": "DATA",
+      "source": "P06",
+      "target": "X04",
+      "label": "External OCR request for scanned dossier",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F24",
+      "type": "DATA",
+      "source": "P03",
+      "target": "P13",
+      "label": "Producer onboarding message",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F25",
+      "type": "DATA",
+      "source": "P11",
+      "target": "P13",
+      "label": "Approved advisory follow-up",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F26",
+      "type": "DATA",
+      "source": "P05",
+      "target": "S01",
+      "label": "Lot persistence (logical write payload, not DB replication)",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F27",
+      "type": "DATA",
+      "source": "P08",
+      "target": "S01",
+      "label": "Order persistence",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F28",
+      "type": "DATA",
+      "source": "P06",
+      "target": "S02",
+      "label": "Quality document object-store transfer",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F29",
+      "type": "DATA",
+      "source": "P04",
+      "target": "S03",
+      "label": "Durable intake queue",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "F30",
+      "type": "DATA",
+      "source": "P02",
+      "target": "S01",
+      "label": "Identity and role lookup",
+      "phase_ids": [
+        "L03",
+        "L09"
+      ]
+    },
+    {
+      "id": "AE01",
+      "type": "CODE",
+      "source": "P11",
+      "target": "AGENT01",
+      "label": "Agent runtime mapping"
+    },
+    {
+      "id": "AE02",
+      "type": "INVOKES",
+      "source": "AGENT01",
+      "target": "MODELSVC01",
+      "label": "Hosted inference"
+    },
+    {
+      "id": "AE03",
+      "type": "MODELDEP",
+      "source": "MODELSVC01",
+      "target": "MODEL01",
+      "label": "Model version binding"
+    },
+    {
+      "id": "AE04",
+      "type": "TOOLCALL",
+      "source": "AGENT01",
+      "target": "TOOL01",
+      "label": "Tool invocation"
+    },
+    {
+      "id": "AE05",
+      "type": "POLICY",
+      "source": "SAFE01",
+      "target": "TOOL01",
+      "label": "Read-only safety policy"
+    },
+    {
+      "id": "AE06",
+      "type": "POLICY",
+      "source": "HITL01",
+      "target": "AGENT01",
+      "label": "Human approval for advice"
+    },
+    {
+      "id": "AE07",
+      "type": "CONTR",
+      "source": "TOOL01",
+      "target": "P05",
+      "label": "Tool reads lot registry"
+    },
+    {
+      "id": "AE08",
+      "type": "AICOST",
+      "source": "AICHARGE01",
+      "target": "CC01",
+      "label": "Bill AI service to platform"
+    },
+    {
+      "id": "AE09",
+      "type": "OWN",
+      "source": "TEAM01",
+      "target": "P04",
+      "label": "Platform ownership"
+    },
+    {
+      "id": "AE10",
+      "type": "RESUSE",
+      "source": "P04",
+      "target": "RES01",
+      "label": "Compute usage mapping"
+    },
+    {
+      "id": "AE11",
+      "type": "COST",
+      "source": "RES01",
+      "target": "CC01",
+      "label": "Allocate shared pool costs"
+    },
+    {
+      "id": "AE12",
+      "type": "DEL",
+      "source": "PIPE01",
+      "target": "ENV01",
+      "label": "Release mapping"
+    },
+    {
+      "id": "AE13",
+      "type": "HOST",
+      "source": "P06",
+      "target": "RES01",
+      "label": "Quality service deployment"
+    },
+    {
+      "id": "AE14",
+      "type": "OUTCOME",
+      "source": "P08",
+      "target": "OUT01",
+      "label": "Trace accepted outcome"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "ANN0001",
+      "target_id": "P01",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0002",
+      "target_id": "P01",
+      "key": "tech.cpu_request_per_replica",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0003",
+      "target_id": "P01",
+      "key": "tech.ram_request_per_replica",
+      "value": 0.75,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0004",
+      "target_id": "P01",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 1.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0005",
+      "target_id": "P01",
+      "key": "tech.ram_aggregate_requested",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0006",
+      "target_id": "P02",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0007",
+      "target_id": "P02",
+      "key": "tech.cpu_request_per_replica",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0008",
+      "target_id": "P02",
+      "key": "tech.ram_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0009",
+      "target_id": "P02",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 1.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0010",
+      "target_id": "P02",
+      "key": "tech.ram_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0011",
+      "target_id": "P03",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0012",
+      "target_id": "P03",
+      "key": "tech.cpu_request_per_replica",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0013",
+      "target_id": "P03",
+      "key": "tech.ram_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0014",
+      "target_id": "P03",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 1.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0015",
+      "target_id": "P03",
+      "key": "tech.ram_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0016",
+      "target_id": "P04",
+      "key": "tech.replica_count",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0017",
+      "target_id": "P04",
+      "key": "tech.cpu_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0018",
+      "target_id": "P04",
+      "key": "tech.ram_request_per_replica",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0019",
+      "target_id": "P04",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0020",
+      "target_id": "P04",
+      "key": "tech.ram_aggregate_requested",
+      "value": 4.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0021",
+      "target_id": "P05",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0022",
+      "target_id": "P05",
+      "key": "tech.cpu_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0023",
+      "target_id": "P05",
+      "key": "tech.ram_request_per_replica",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0024",
+      "target_id": "P05",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0025",
+      "target_id": "P05",
+      "key": "tech.ram_aggregate_requested",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0026",
+      "target_id": "P06",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0027",
+      "target_id": "P06",
+      "key": "tech.cpu_request_per_replica",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0028",
+      "target_id": "P06",
+      "key": "tech.ram_request_per_replica",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0029",
+      "target_id": "P06",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 3.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0030",
+      "target_id": "P06",
+      "key": "tech.ram_aggregate_requested",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0031",
+      "target_id": "P07",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0032",
+      "target_id": "P07",
+      "key": "tech.cpu_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0033",
+      "target_id": "P07",
+      "key": "tech.ram_request_per_replica",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0034",
+      "target_id": "P07",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0035",
+      "target_id": "P07",
+      "key": "tech.ram_aggregate_requested",
+      "value": 3.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0036",
+      "target_id": "P08",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0037",
+      "target_id": "P08",
+      "key": "tech.cpu_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0038",
+      "target_id": "P08",
+      "key": "tech.ram_request_per_replica",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0039",
+      "target_id": "P08",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0040",
+      "target_id": "P08",
+      "key": "tech.ram_aggregate_requested",
+      "value": 3.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0041",
+      "target_id": "P09",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0042",
+      "target_id": "P09",
+      "key": "tech.cpu_request_per_replica",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0043",
+      "target_id": "P09",
+      "key": "tech.ram_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0044",
+      "target_id": "P09",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 1.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0045",
+      "target_id": "P09",
+      "key": "tech.ram_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0046",
+      "target_id": "P10",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0047",
+      "target_id": "P10",
+      "key": "tech.cpu_request_per_replica",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0048",
+      "target_id": "P10",
+      "key": "tech.ram_request_per_replica",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0049",
+      "target_id": "P10",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0050",
+      "target_id": "P10",
+      "key": "tech.ram_aggregate_requested",
+      "value": 3.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0051",
+      "target_id": "P11",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0052",
+      "target_id": "P11",
+      "key": "tech.cpu_request_per_replica",
+      "value": 0.75,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0053",
+      "target_id": "P11",
+      "key": "tech.ram_request_per_replica",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0054",
+      "target_id": "P11",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0055",
+      "target_id": "P11",
+      "key": "tech.ram_aggregate_requested",
+      "value": 3.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0056",
+      "target_id": "P12",
+      "key": "tech.replica_count",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0057",
+      "target_id": "P12",
+      "key": "tech.cpu_request_per_replica",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0058",
+      "target_id": "P12",
+      "key": "tech.ram_request_per_replica",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0059",
+      "target_id": "P12",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0060",
+      "target_id": "P12",
+      "key": "tech.ram_aggregate_requested",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0061",
+      "target_id": "P13",
+      "key": "tech.replica_count",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "replicas"
+    },
+    {
+      "id": "ANN0062",
+      "target_id": "P13",
+      "key": "tech.cpu_request_per_replica",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU/replica"
+    },
+    {
+      "id": "ANN0063",
+      "target_id": "P13",
+      "key": "tech.ram_request_per_replica",
+      "value": 0.75,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB/replica"
+    },
+    {
+      "id": "ANN0064",
+      "target_id": "P13",
+      "key": "tech.cpu_aggregate_requested",
+      "value": 1.0,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0065",
+      "target_id": "P13",
+      "key": "tech.ram_aggregate_requested",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0066",
+      "target_id": "F01",
+      "key": "data.payload_mean",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0067",
+      "target_id": "F01",
+      "key": "data.event_rate_normal",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0068",
+      "target_id": "F01",
+      "key": "data.event_rate_peak",
+      "value": 8,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0069",
+      "target_id": "F01",
+      "key": "network.required_capacity_peak",
+      "value": 1.4519,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0070",
+      "target_id": "F01",
+      "key": "network.target_p95_hop_latency",
+      "value": 450,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0071",
+      "target_id": "F01",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0072",
+      "target_id": "F01",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0073",
+      "target_id": "F02",
+      "key": "data.payload_mean",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0074",
+      "target_id": "F02",
+      "key": "data.event_rate_normal",
+      "value": 10,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0075",
+      "target_id": "F02",
+      "key": "data.event_rate_peak",
+      "value": 40,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0076",
+      "target_id": "F02",
+      "key": "network.required_capacity_peak",
+      "value": 1.8148,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0077",
+      "target_id": "F02",
+      "key": "network.target_p95_hop_latency",
+      "value": 350,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0078",
+      "target_id": "F02",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0079",
+      "target_id": "F02",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0080",
+      "target_id": "F03",
+      "key": "data.payload_mean",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0081",
+      "target_id": "F03",
+      "key": "data.event_rate_normal",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0082",
+      "target_id": "F03",
+      "key": "data.event_rate_peak",
+      "value": 16,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0083",
+      "target_id": "F03",
+      "key": "network.required_capacity_peak",
+      "value": 0.363,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0084",
+      "target_id": "F03",
+      "key": "network.target_p95_hop_latency",
+      "value": 100,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0085",
+      "target_id": "F03",
+      "key": "network.protocol",
+      "value": "gRPC",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0086",
+      "target_id": "F03",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0087",
+      "target_id": "F04",
+      "key": "data.payload_mean",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0088",
+      "target_id": "F04",
+      "key": "data.event_rate_normal",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0089",
+      "target_id": "F04",
+      "key": "data.event_rate_peak",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0090",
+      "target_id": "F04",
+      "key": "network.required_capacity_peak",
+      "value": 0.0605,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0091",
+      "target_id": "F04",
+      "key": "network.target_p95_hop_latency",
+      "value": 150,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0092",
+      "target_id": "F04",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0093",
+      "target_id": "F04",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0094",
+      "target_id": "F05",
+      "key": "data.payload_mean",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0095",
+      "target_id": "F05",
+      "key": "data.event_rate_normal",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0096",
+      "target_id": "F05",
+      "key": "data.event_rate_peak",
+      "value": 8,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0097",
+      "target_id": "F05",
+      "key": "network.required_capacity_peak",
+      "value": 1.4519,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0098",
+      "target_id": "F05",
+      "key": "network.target_p95_hop_latency",
+      "value": 300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0099",
+      "target_id": "F05",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0100",
+      "target_id": "F05",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0101",
+      "target_id": "F06",
+      "key": "data.payload_mean",
+      "value": 6,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0102",
+      "target_id": "F06",
+      "key": "data.event_rate_normal",
+      "value": 1.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0103",
+      "target_id": "F06",
+      "key": "data.event_rate_peak",
+      "value": 6,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0104",
+      "target_id": "F06",
+      "key": "network.required_capacity_peak",
+      "value": 0.5445,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0105",
+      "target_id": "F06",
+      "key": "network.target_p95_hop_latency",
+      "value": 250,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0106",
+      "target_id": "F06",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0107",
+      "target_id": "F06",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0108",
+      "target_id": "F07",
+      "key": "data.payload_mean",
+      "value": 256,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0109",
+      "target_id": "F07",
+      "key": "data.event_rate_normal",
+      "value": 0.1,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0110",
+      "target_id": "F07",
+      "key": "data.event_rate_peak",
+      "value": 0.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0111",
+      "target_id": "F07",
+      "key": "network.required_capacity_peak",
+      "value": 1.5487,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0112",
+      "target_id": "F07",
+      "key": "network.target_p95_hop_latency",
+      "value": 650,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0113",
+      "target_id": "F07",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0114",
+      "target_id": "F07",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0115",
+      "target_id": "F08",
+      "key": "data.payload_mean",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0116",
+      "target_id": "F08",
+      "key": "data.event_rate_normal",
+      "value": 0.1,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0117",
+      "target_id": "F08",
+      "key": "data.event_rate_peak",
+      "value": 0.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0118",
+      "target_id": "F08",
+      "key": "network.required_capacity_peak",
+      "value": 0.0121,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0119",
+      "target_id": "F08",
+      "key": "network.target_p95_hop_latency",
+      "value": 500,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0120",
+      "target_id": "F08",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0121",
+      "target_id": "F08",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0122",
+      "target_id": "F09",
+      "key": "data.payload_mean",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0123",
+      "target_id": "F09",
+      "key": "data.event_rate_normal",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0124",
+      "target_id": "F09",
+      "key": "data.event_rate_peak",
+      "value": 8,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0125",
+      "target_id": "F09",
+      "key": "network.required_capacity_peak",
+      "value": 0.242,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0126",
+      "target_id": "F09",
+      "key": "network.target_p95_hop_latency",
+      "value": 200,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0127",
+      "target_id": "F09",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0128",
+      "target_id": "F09",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0129",
+      "target_id": "F10",
+      "key": "data.payload_mean",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0130",
+      "target_id": "F10",
+      "key": "data.event_rate_normal",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0131",
+      "target_id": "F10",
+      "key": "data.event_rate_peak",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0132",
+      "target_id": "F10",
+      "key": "network.required_capacity_peak",
+      "value": 0.5445,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0133",
+      "target_id": "F10",
+      "key": "network.target_p95_hop_latency",
+      "value": 300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0134",
+      "target_id": "F10",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0135",
+      "target_id": "F10",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0136",
+      "target_id": "F11",
+      "key": "data.payload_mean",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0137",
+      "target_id": "F11",
+      "key": "data.event_rate_normal",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0138",
+      "target_id": "F11",
+      "key": "data.event_rate_peak",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0139",
+      "target_id": "F11",
+      "key": "network.required_capacity_peak",
+      "value": 0.363,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0140",
+      "target_id": "F11",
+      "key": "network.target_p95_hop_latency",
+      "value": 170,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0141",
+      "target_id": "F11",
+      "key": "network.protocol",
+      "value": "gRPC",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0142",
+      "target_id": "F11",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0143",
+      "target_id": "F12",
+      "key": "data.payload_mean",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0144",
+      "target_id": "F12",
+      "key": "data.event_rate_normal",
+      "value": 0.6,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0145",
+      "target_id": "F12",
+      "key": "data.event_rate_peak",
+      "value": 2.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0146",
+      "target_id": "F12",
+      "key": "network.required_capacity_peak",
+      "value": 0.0726,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0147",
+      "target_id": "F12",
+      "key": "network.target_p95_hop_latency",
+      "value": 400,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0148",
+      "target_id": "F12",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0149",
+      "target_id": "F12",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0150",
+      "target_id": "F13",
+      "key": "data.payload_mean",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0151",
+      "target_id": "F13",
+      "key": "data.event_rate_normal",
+      "value": 0.6,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0152",
+      "target_id": "F13",
+      "key": "data.event_rate_peak",
+      "value": 2.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0153",
+      "target_id": "F13",
+      "key": "network.required_capacity_peak",
+      "value": 0.1452,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0154",
+      "target_id": "F13",
+      "key": "network.target_p95_hop_latency",
+      "value": 450,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0155",
+      "target_id": "F13",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0156",
+      "target_id": "F13",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0157",
+      "target_id": "F14",
+      "key": "data.payload_mean",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0158",
+      "target_id": "F14",
+      "key": "data.event_rate_normal",
+      "value": 0.8,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0159",
+      "target_id": "F14",
+      "key": "data.event_rate_peak",
+      "value": 3.2,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0160",
+      "target_id": "F14",
+      "key": "network.required_capacity_peak",
+      "value": 0.0484,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0161",
+      "target_id": "F14",
+      "key": "network.target_p95_hop_latency",
+      "value": 300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0162",
+      "target_id": "F14",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0163",
+      "target_id": "F14",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0164",
+      "target_id": "F15",
+      "key": "data.payload_mean",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0165",
+      "target_id": "F15",
+      "key": "data.event_rate_normal",
+      "value": 0.6,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0166",
+      "target_id": "F15",
+      "key": "data.event_rate_peak",
+      "value": 2.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0167",
+      "target_id": "F15",
+      "key": "network.required_capacity_peak",
+      "value": 0.0363,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0168",
+      "target_id": "F15",
+      "key": "network.target_p95_hop_latency",
+      "value": 250,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0169",
+      "target_id": "F15",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0170",
+      "target_id": "F15",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0171",
+      "target_id": "F16",
+      "key": "data.payload_mean",
+      "value": 8,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0172",
+      "target_id": "F16",
+      "key": "data.event_rate_normal",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0173",
+      "target_id": "F16",
+      "key": "data.event_rate_peak",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0174",
+      "target_id": "F16",
+      "key": "network.required_capacity_peak",
+      "value": 0.242,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0175",
+      "target_id": "F16",
+      "key": "network.target_p95_hop_latency",
+      "value": 500,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0176",
+      "target_id": "F16",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0177",
+      "target_id": "F16",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0178",
+      "target_id": "F17",
+      "key": "data.payload_mean",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0179",
+      "target_id": "F17",
+      "key": "data.event_rate_normal",
+      "value": 0.75,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0180",
+      "target_id": "F17",
+      "key": "data.event_rate_peak",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0181",
+      "target_id": "F17",
+      "key": "network.required_capacity_peak",
+      "value": 0.5445,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0182",
+      "target_id": "F17",
+      "key": "network.target_p95_hop_latency",
+      "value": 2500,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0183",
+      "target_id": "F17",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0184",
+      "target_id": "F17",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0185",
+      "target_id": "F18",
+      "key": "data.payload_mean",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0186",
+      "target_id": "F18",
+      "key": "data.event_rate_normal",
+      "value": 0.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0187",
+      "target_id": "F18",
+      "key": "data.event_rate_peak",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0188",
+      "target_id": "F18",
+      "key": "network.required_capacity_peak",
+      "value": 0.121,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0189",
+      "target_id": "F18",
+      "key": "network.target_p95_hop_latency",
+      "value": 300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0190",
+      "target_id": "F18",
+      "key": "network.protocol",
+      "value": "gRPC",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0191",
+      "target_id": "F18",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0192",
+      "target_id": "F19",
+      "key": "data.payload_mean",
+      "value": 25,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0193",
+      "target_id": "F19",
+      "key": "data.event_rate_normal",
+      "value": 0.05,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0194",
+      "target_id": "F19",
+      "key": "data.event_rate_peak",
+      "value": 0.2,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0195",
+      "target_id": "F19",
+      "key": "network.required_capacity_peak",
+      "value": 0.0756,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0196",
+      "target_id": "F19",
+      "key": "network.target_p95_hop_latency",
+      "value": 900,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0197",
+      "target_id": "F19",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0198",
+      "target_id": "F19",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0199",
+      "target_id": "F20",
+      "key": "data.payload_mean",
+      "value": 6,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0200",
+      "target_id": "F20",
+      "key": "data.event_rate_normal",
+      "value": 0.05,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0201",
+      "target_id": "F20",
+      "key": "data.event_rate_peak",
+      "value": 0.2,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0202",
+      "target_id": "F20",
+      "key": "network.required_capacity_peak",
+      "value": 0.0181,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0203",
+      "target_id": "F20",
+      "key": "network.target_p95_hop_latency",
+      "value": 900,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0204",
+      "target_id": "F20",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0205",
+      "target_id": "F20",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0206",
+      "target_id": "F21",
+      "key": "data.payload_mean",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0207",
+      "target_id": "F21",
+      "key": "data.event_rate_normal",
+      "value": 0.05,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0208",
+      "target_id": "F21",
+      "key": "data.event_rate_peak",
+      "value": 0.2,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0209",
+      "target_id": "F21",
+      "key": "network.required_capacity_peak",
+      "value": 0.0121,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0210",
+      "target_id": "F21",
+      "key": "network.target_p95_hop_latency",
+      "value": 450,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0211",
+      "target_id": "F21",
+      "key": "network.protocol",
+      "value": "gRPC",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0212",
+      "target_id": "F21",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0213",
+      "target_id": "F22",
+      "key": "data.payload_mean",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0214",
+      "target_id": "F22",
+      "key": "data.event_rate_normal",
+      "value": 0.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0215",
+      "target_id": "F22",
+      "key": "data.event_rate_peak",
+      "value": 1.6,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0216",
+      "target_id": "F22",
+      "key": "network.required_capacity_peak",
+      "value": 0.0726,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0217",
+      "target_id": "F22",
+      "key": "network.target_p95_hop_latency",
+      "value": 300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0218",
+      "target_id": "F22",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0219",
+      "target_id": "F22",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0220",
+      "target_id": "F23",
+      "key": "data.payload_mean",
+      "value": 256,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0221",
+      "target_id": "F23",
+      "key": "data.event_rate_normal",
+      "value": 0.1,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0222",
+      "target_id": "F23",
+      "key": "data.event_rate_peak",
+      "value": 0.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0223",
+      "target_id": "F23",
+      "key": "network.required_capacity_peak",
+      "value": 1.5487,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0224",
+      "target_id": "F23",
+      "key": "network.target_p95_hop_latency",
+      "value": 3500,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0225",
+      "target_id": "F23",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0226",
+      "target_id": "F23",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0227",
+      "target_id": "F24",
+      "key": "data.payload_mean",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0228",
+      "target_id": "F24",
+      "key": "data.event_rate_normal",
+      "value": 0.2,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0229",
+      "target_id": "F24",
+      "key": "data.event_rate_peak",
+      "value": 0.8,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0230",
+      "target_id": "F24",
+      "key": "network.required_capacity_peak",
+      "value": 0.0121,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0231",
+      "target_id": "F24",
+      "key": "network.target_p95_hop_latency",
+      "value": 300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0232",
+      "target_id": "F24",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0233",
+      "target_id": "F24",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0234",
+      "target_id": "F25",
+      "key": "data.payload_mean",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0235",
+      "target_id": "F25",
+      "key": "data.event_rate_normal",
+      "value": 0.1,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0236",
+      "target_id": "F25",
+      "key": "data.event_rate_peak",
+      "value": 0.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0237",
+      "target_id": "F25",
+      "key": "network.required_capacity_peak",
+      "value": 0.006,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0238",
+      "target_id": "F25",
+      "key": "network.target_p95_hop_latency",
+      "value": 450,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0239",
+      "target_id": "F25",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0240",
+      "target_id": "F25",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0241",
+      "target_id": "F26",
+      "key": "data.payload_mean",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0242",
+      "target_id": "F26",
+      "key": "data.event_rate_normal",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0243",
+      "target_id": "F26",
+      "key": "data.event_rate_peak",
+      "value": 8,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0244",
+      "target_id": "F26",
+      "key": "network.required_capacity_peak",
+      "value": 0.242,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0245",
+      "target_id": "F26",
+      "key": "network.target_p95_hop_latency",
+      "value": 160,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0246",
+      "target_id": "F26",
+      "key": "network.protocol",
+      "value": "SQL",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0247",
+      "target_id": "F26",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0248",
+      "target_id": "F27",
+      "key": "data.payload_mean",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0249",
+      "target_id": "F27",
+      "key": "data.event_rate_normal",
+      "value": 3,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0250",
+      "target_id": "F27",
+      "key": "data.event_rate_peak",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0251",
+      "target_id": "F27",
+      "key": "network.required_capacity_peak",
+      "value": 0.363,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0252",
+      "target_id": "F27",
+      "key": "network.target_p95_hop_latency",
+      "value": 160,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0253",
+      "target_id": "F27",
+      "key": "network.protocol",
+      "value": "SQL",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0254",
+      "target_id": "F27",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0255",
+      "target_id": "F28",
+      "key": "data.payload_mean",
+      "value": 256,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0256",
+      "target_id": "F28",
+      "key": "data.event_rate_normal",
+      "value": 0.1,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0257",
+      "target_id": "F28",
+      "key": "data.event_rate_peak",
+      "value": 0.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0258",
+      "target_id": "F28",
+      "key": "network.required_capacity_peak",
+      "value": 1.5487,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0259",
+      "target_id": "F28",
+      "key": "network.target_p95_hop_latency",
+      "value": 900,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0260",
+      "target_id": "F28",
+      "key": "network.protocol",
+      "value": "HTTPS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0261",
+      "target_id": "F28",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0262",
+      "target_id": "F29",
+      "key": "data.payload_mean",
+      "value": 12,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0263",
+      "target_id": "F29",
+      "key": "data.event_rate_normal",
+      "value": 2,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0264",
+      "target_id": "F29",
+      "key": "data.event_rate_peak",
+      "value": 8,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0265",
+      "target_id": "F29",
+      "key": "network.required_capacity_peak",
+      "value": 1.4519,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0266",
+      "target_id": "F29",
+      "key": "network.target_p95_hop_latency",
+      "value": 180,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0267",
+      "target_id": "F29",
+      "key": "network.protocol",
+      "value": "AMQP",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0268",
+      "target_id": "F29",
+      "key": "sec.transport",
+      "value": "mTLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0269",
+      "target_id": "F30",
+      "key": "data.payload_mean",
+      "value": 1,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "KiB/message"
+    },
+    {
+      "id": "ANN0270",
+      "target_id": "F30",
+      "key": "data.event_rate_normal",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0271",
+      "target_id": "F30",
+      "key": "data.event_rate_peak",
+      "value": 16,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "message/s"
+    },
+    {
+      "id": "ANN0272",
+      "target_id": "F30",
+      "key": "network.required_capacity_peak",
+      "value": 0.242,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "Mbit/s"
+    },
+    {
+      "id": "ANN0273",
+      "target_id": "F30",
+      "key": "network.target_p95_hop_latency",
+      "value": 160,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "ms"
+    },
+    {
+      "id": "ANN0274",
+      "target_id": "F30",
+      "key": "network.protocol",
+      "value": "SQL",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0275",
+      "target_id": "F30",
+      "key": "sec.transport",
+      "value": "TLS",
+      "datatype": "string",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    },
+    {
+      "id": "ANN0276",
+      "target_id": "RES01",
+      "key": "tech.total_app_reserved_cpu",
+      "value": 22.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "vCPU"
+    },
+    {
+      "id": "ANN0277",
+      "target_id": "RES01",
+      "key": "tech.total_app_reserved_ram",
+      "value": 37.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "GiB"
+    },
+    {
+      "id": "ANN0278",
+      "target_id": "RES01",
+      "key": "fin.monthly_app_compute_estimate",
+      "value": 25732.5,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "MAD/month"
+    },
+    {
+      "id": "ANN0279",
+      "target_id": "MODELSVC01",
+      "key": "aiinf.input_tokens_per_model_call",
+      "value": 1300,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "token/call"
+    },
+    {
+      "id": "ANN0280",
+      "target_id": "MODELSVC01",
+      "key": "aiinf.output_tokens_per_model_call",
+      "value": 350,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "token/call"
+    },
+    {
+      "id": "ANN0281",
+      "target_id": "AGENT01",
+      "key": "aiagent.model_calls_per_session",
+      "value": 1.4,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "call/session"
+    },
+    {
+      "id": "ANN0282",
+      "target_id": "AGENT01",
+      "key": "aiagent.max_tool_steps",
+      "value": 4,
+      "datatype": "integer",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "step/run"
+    },
+    {
+      "id": "ANN0283",
+      "target_id": "AICHARGE01",
+      "key": "aicost.estimated_monthly_llm_api_cost",
+      "value": 1272.6,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "MAD/month"
+    },
+    {
+      "id": "ANN0284",
+      "target_id": "CC01",
+      "key": "fin.total_monthly_platform_estimate",
+      "value": 35645.1,
+      "datatype": "number",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19",
+      "unit": "MAD/month"
+    },
+    {
+      "id": "ANN0285",
+      "target_id": "HITL01",
+      "key": "aigov.approval_required",
+      "value": true,
+      "datatype": "boolean",
+      "scope": {
+        "scenario_id": "SC-base",
+        "phase_id": "L09",
+        "environment": "simulation",
+        "granularity": "aggregate_pilot"
+      },
+      "status": "hypothetical",
+      "source_kind": "simulation",
+      "evidence_refs": [],
+      "observed_at": "2026-11-19"
+    }
+  ],
+  "evidence": [],
+  "constraints": [
+    {
+      "id": "CON-F01",
+      "target_ids": [
+        "F01"
+      ],
+      "comparator": "le",
+      "value": 450,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F02",
+      "target_ids": [
+        "F02"
+      ],
+      "comparator": "le",
+      "value": 350,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F03",
+      "target_ids": [
+        "F03"
+      ],
+      "comparator": "le",
+      "value": 100,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F04",
+      "target_ids": [
+        "F04"
+      ],
+      "comparator": "le",
+      "value": 150,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F05",
+      "target_ids": [
+        "F05"
+      ],
+      "comparator": "le",
+      "value": 300,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F06",
+      "target_ids": [
+        "F06"
+      ],
+      "comparator": "le",
+      "value": 250,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F07",
+      "target_ids": [
+        "F07"
+      ],
+      "comparator": "le",
+      "value": 650,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F08",
+      "target_ids": [
+        "F08"
+      ],
+      "comparator": "le",
+      "value": 500,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F09",
+      "target_ids": [
+        "F09"
+      ],
+      "comparator": "le",
+      "value": 200,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F10",
+      "target_ids": [
+        "F10"
+      ],
+      "comparator": "le",
+      "value": 300,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F11",
+      "target_ids": [
+        "F11"
+      ],
+      "comparator": "le",
+      "value": 170,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F12",
+      "target_ids": [
+        "F12"
+      ],
+      "comparator": "le",
+      "value": 400,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F13",
+      "target_ids": [
+        "F13"
+      ],
+      "comparator": "le",
+      "value": 450,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F14",
+      "target_ids": [
+        "F14"
+      ],
+      "comparator": "le",
+      "value": 300,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F15",
+      "target_ids": [
+        "F15"
+      ],
+      "comparator": "le",
+      "value": 250,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F16",
+      "target_ids": [
+        "F16"
+      ],
+      "comparator": "le",
+      "value": 500,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F17",
+      "target_ids": [
+        "F17"
+      ],
+      "comparator": "le",
+      "value": 2500,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F18",
+      "target_ids": [
+        "F18"
+      ],
+      "comparator": "le",
+      "value": 300,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F19",
+      "target_ids": [
+        "F19"
+      ],
+      "comparator": "le",
+      "value": 900,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F20",
+      "target_ids": [
+        "F20"
+      ],
+      "comparator": "le",
+      "value": 900,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F21",
+      "target_ids": [
+        "F21"
+      ],
+      "comparator": "le",
+      "value": 450,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F22",
+      "target_ids": [
+        "F22"
+      ],
+      "comparator": "le",
+      "value": 300,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F23",
+      "target_ids": [
+        "F23"
+      ],
+      "comparator": "le",
+      "value": 3500,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F24",
+      "target_ids": [
+        "F24"
+      ],
+      "comparator": "le",
+      "value": 300,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F25",
+      "target_ids": [
+        "F25"
+      ],
+      "comparator": "le",
+      "value": 450,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F26",
+      "target_ids": [
+        "F26"
+      ],
+      "comparator": "le",
+      "value": 160,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F27",
+      "target_ids": [
+        "F27"
+      ],
+      "comparator": "le",
+      "value": 160,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F28",
+      "target_ids": [
+        "F28"
+      ],
+      "comparator": "le",
+      "value": 900,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F29",
+      "target_ids": [
+        "F29"
+      ],
+      "comparator": "le",
+      "value": 180,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    },
+    {
+      "id": "CON-F30",
+      "target_ids": [
+        "F30"
+      ],
+      "comparator": "le",
+      "value": 160,
+      "unit": "ms",
+      "scenario_id": "SC-peak",
+      "verification": "Load test/tracing required; unverified design target"
+    }
+  ]
+}

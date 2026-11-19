@@ -1,0 +1,183 @@
+# Appendix E. AI / Agentic UL-xDFD reference YAML specimen
+
+
+
+The complete YAML file is also available as [`examples/hotel-ai.yaml`](../../examples/hotel-ai.yaml), and is checked by the bundled structural validator. It contains a booking API, an agent definition and run, a model/endpoint pair, a retrieval index, an authorized tool, human review, and a hypothetical token-charge record. Every numeric value is an *illustrative assumption*.
+
+```yaml
+spec_version: '1.0'
+metadata:
+  id: hotel-ai-booking
+  name: Hotel AI assistant example (synthetic)
+  revision: 1
+  status: hypothetical
+  date: '2026-11-15'
+phases:
+- id: L03
+  label: Architecture
+- id: L09
+  label: Operation
+scenarios:
+- id: SC-ai-booking
+  label: AI-assisted hotel booking
+  environment: simulation
+  phase_id: L09
+  window: synthetic-month
+  assumptions:
+    sessions: 50000
+    ai_fraction: 0.7
+nodes:
+- id: X1
+  type: X
+  label: Customer
+- id: P1
+  type: P
+  label: Booking API
+- id: P2
+  type: P
+  label: Assistant gateway
+- id: AGENT1
+  type: AGENT
+  label: Booking agent
+- id: AGRUN1
+  type: AGRUN
+  label: Agent run sample
+- id: MODEL1
+  type: MODEL
+  label: Fictional LLM-v7
+- id: MODELSVC1
+  type: MODELSVC
+  label: Fictional hosted endpoint
+- id: TOOL1
+  type: TOOL
+  label: Search booking availability
+- id: HITL1
+  type: HITL
+  label: Approve paid booking
+- id: SAFE1
+  type: SAFE
+  label: Deny unauthorized writes
+- id: CORPUS1
+  type: CORPUS
+  label: Refund policy corpus
+- id: VINDEX1
+  type: VINDEX
+  label: Policy vector index
+- id: AICHARGE1
+  type: AICHARGE
+  label: Model token usage ledger
+- id: CC1
+  type: CC
+  label: Booking team
+- id: AIOUT1
+  type: AIOUT
+  label: Accepted AI-assisted outcome
+edges:
+- id: F1
+  type: DATA
+  source: X1
+  target: P1
+  label: booking request
+- id: F2
+  type: DATA
+  source: P1
+  target: P2
+  label: request context
+- id: AE1
+  type: INVOKES
+  source: AGENT1
+  target: MODELSVC1
+- id: AE2
+  type: TOOLCALL
+  source: AGENT1
+  target: TOOL1
+- id: AE3
+  type: RETRIEVES
+  source: AGENT1
+  target: VINDEX1
+- id: AE4
+  type: POLICY
+  source: SAFE1
+  target: TOOL1
+- id: AE5
+  type: POLICY
+  source: HITL1
+  target: TOOL1
+- id: AE6
+  type: MODELDEP
+  source: MODELSVC1
+  target: MODEL1
+- id: AE7
+  type: AICOST
+  source: AICHARGE1
+  target: CC1
+- id: AE8
+  type: AIRESULT
+  source: AGRUN1
+  target: AIOUT1
+annotations:
+- id: AI-A01
+  target_id: MODELSVC1
+  key: aiinf.input_tokens_billed
+  value: 1500
+  datatype: number
+  unit: token/invocation
+  scope:
+    scenario_id: SC-ai-booking
+    phase_id: L09
+    environment: simulation
+    granularity: per_invocation
+  status: hypothetical
+  source_kind: simulation
+  evidence_refs: []
+  observed_at: '2026-11-15'
+- id: AI-A02
+  target_id: AGENT1
+  key: aiagent.step_limit
+  value: 5
+  datatype: integer
+  unit: step/run
+  scope:
+    scenario_id: SC-ai-booking
+    phase_id: L09
+    environment: simulation
+  status: hypothetical
+  source_kind: simulation
+  evidence_refs: []
+  observed_at: '2026-11-15'
+- id: AI-A03
+  target_id: MODELSVC1
+  key: aicost.input_price
+  value: 0.5
+  datatype: number
+  unit: USD/1000000_token
+  scope:
+    scenario_id: SC-ai-booking
+    phase_id: L09
+    environment: simulation
+  status: hypothetical
+  source_kind: simulation
+  evidence_refs: []
+  observed_at: '2026-11-15'
+evidence: []
+constraints:
+- id: C1
+  target_ids:
+  - AGENT1
+  - TOOL1
+  comparator: le
+  value: 5
+  unit: step/run
+  scenario_id: SC-ai-booking
+  verification: synthetic loop-budget test
+ai_profiles:
+- AI-INFERENCE
+- AI-AGENT
+- AI-RAG
+```
+
+For intended graph semantics and additional annotations, see [the AI modeling guide](../ai-and-agentic.md) and [the annotation dictionary](07-annotation-dictionary.md). This file passing the starter validator does not mean its agent behavior, billing, or permissions have been tested.
+
+---
+
+[Documentation home](../../README.md) · [Technical reference index](README.md)

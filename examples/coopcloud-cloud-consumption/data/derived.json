@@ -1,0 +1,24 @@
+{
+  "total_reserved_vcpu": 22.5,
+  "total_reserved_ram_gib": 37.5,
+  "app_compute_month_mad": 25732.5,
+  "llm_calls_month": 42000.0,
+  "llm_input_tokens_month": 54600000.0,
+  "llm_output_tokens_month": 14700000.0,
+  "llm_api_month_mad": 1272.6,
+  "ocr_api_month_mad": 360.0,
+  "monthly_total_mad": 35645.1,
+  "cost_components_mad": {
+    "App compute (CPU)": 21352.5,
+    "App compute (RAM)": 4380.0,
+    "Managed relational DB": 3200,
+    "Queue & cache services": 1150,
+    "Object storage & backup": 550,
+    "Telemetry & audit retention": 1350,
+    "Networking / external egress": 850,
+    "CI/CD runners & scanning": 800,
+    "Embedding / retrieval index": 380,
+    "LLM API (tokens)": 1272.6,
+    "OCR API (documents)": 360.0
+  }
+}

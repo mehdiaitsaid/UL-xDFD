@@ -1,0 +1,31 @@
+id,source,target,payload_kib,normal_rps,peak_rps,peak_mbps,latency_p95_ms,protocol,security,notes
+F01,X01,P01,12,2,8,1.4519,450,HTTPS,TLS,Farmer synchronization via intermittently connected mobile
+F02,X02,P01,3,10,40,1.8148,350,HTTPS,TLS,Buyer page and API request
+F03,P01,P02,1.5,4,16,0.363,100,gRPC,mTLS,Authentication and session claims
+F04,P01,P03,1,1,4,0.0605,150,HTTPS,mTLS,Registry lookup
+F05,P01,P04,12,2,8,1.4519,300,HTTPS,mTLS,Offline batch to sync intake
+F06,P04,P05,6,1.5,6,0.5445,250,AMQP,mTLS,Validated harvest updates
+F07,P05,P06,256,0.1,0.4,1.5487,650,HTTPS,mTLS,Quality dossier attachment
+F08,P06,P05,2,0.1,0.4,0.0121,500,AMQP,mTLS,Parsed quality result
+F09,P05,P07,2,2,8,0.242,200,AMQP,mTLS,New/changed lot inventory event
+F10,P01,P08,3,3,12,0.5445,300,HTTPS,mTLS,Buyer order command
+F11,P08,P07,2,3,12,0.363,170,gRPC,mTLS,Inventory reservation
+F12,P08,P09,2,0.6,2.4,0.0726,400,AMQP,mTLS,Invoice and settlement instruction
+F13,P08,P10,4,0.6,2.4,0.1452,450,AMQP,mTLS,Dispatch request
+F14,P10,P13,1,0.8,3.2,0.0484,300,AMQP,mTLS,Dispatch status notification
+F15,P09,P13,1,0.6,2.4,0.0363,250,AMQP,mTLS,Payment status notification
+F16,P01,P11,8,0.5,2,0.242,500,HTTPS,mTLS,AI advisory conversation request
+F17,P11,X03,12,0.75,3,0.5445,2500,HTTPS,TLS,Hosted model invocation; no raw identity fields
+F18,P11,P05,4,0.5,2,0.121,300,gRPC,mTLS,Authorized read-only lot summary
+F19,P05,P12,25,0.05,0.2,0.0756,900,AMQP,mTLS,Aggregated data for forecasting
+F20,P08,P12,6,0.05,0.2,0.0181,900,AMQP,mTLS,Order analytics feed
+F21,P12,P11,4,0.05,0.2,0.0121,450,gRPC,mTLS,Read-only forecast digest
+F22,P12,P01,3,0.4,1.6,0.0726,300,HTTPS,mTLS,Dashboard analytical result
+F23,P06,X04,256,0.1,0.4,1.5487,3500,HTTPS,TLS,External OCR request for scanned dossier
+F24,P03,P13,1,0.2,0.8,0.0121,300,AMQP,mTLS,Producer onboarding message
+F25,P11,P13,1,0.1,0.4,0.006,450,AMQP,mTLS,Approved advisory follow-up
+F26,P05,S01,2,2,8,0.242,160,SQL,TLS,"Lot persistence (logical write payload, not DB replication)"
+F27,P08,S01,2,3,12,0.363,160,SQL,TLS,Order persistence
+F28,P06,S02,256,0.1,0.4,1.5487,900,HTTPS,TLS,Quality document object-store transfer
+F29,P04,S03,12,2,8,1.4519,180,AMQP,mTLS,Durable intake queue
+F30,P02,S01,1,4,16,0.242,160,SQL,TLS,Identity and role lookup

@@ -1,0 +1,65 @@
+digraph G {
+ graph [rankdir=LR,compound=true,splines=spline,overlap=false,pad="0.45",nodesep="0.55",ranksep="1.6",fontname="DejaVu Sans",bgcolor="white",label="CoopCloud | UL-xDFD V0 + V5 annotated cloud processes and communication IDs\nEvery process shows aggregate requested CPU + RAM; every edge shows a directional peak capacity in Mbps",labelloc=t,fontsize=21,fontcolor="#174a76"];
+ node [fontname="DejaVu Sans",fontsize=11,color="#6e8ca2",penwidth=1.4,style="rounded,filled",shape=box,fillcolor="white",margin="0.24,0.16"];edge [fontname="DejaVu Sans",fontsize=7.5,arrowsize=.6,color="#8196a8",fontcolor="#375c78"];
+ subgraph cluster_0 {label="API & identity";color="#acc4d5";style="rounded,dashed";bgcolor="#e7f2fe";
+  P01 [label="P01 | API Gateway\n1 vCPU • 1.5 GiB\n(2 replicas)"];
+  P02 [label="P02 | Identity Service\n1 vCPU • 2 GiB\n(2 replicas)"];
+ }
+ subgraph cluster_1 {label="Cooperative operations";color="#acc4d5";style="rounded,dashed";bgcolor="#ecf8f5";
+  P03 [label="P03 | Farmer Registry\n1 vCPU • 2 GiB\n(2 replicas)"];
+  P04 [label="P04 | Offline Sync Intake\n3 vCPU • 4.5 GiB\n(3 replicas)"];
+  P05 [label="P05 | Lot Traceability\n2 vCPU • 4 GiB\n(2 replicas)"];
+  P06 [label="P06 | Quality & OCR Workflow\n3 vCPU • 4 GiB\n(2 replicas)"];
+ }
+ subgraph cluster_2 {label="Commerce & fulfillment";color="#acc4d5";style="rounded,dashed";bgcolor="#fff2e5";
+  P07 [label="P07 | Inventory Allocation\n2 vCPU • 3 GiB\n(2 replicas)"];
+  P08 [label="P08 | Buyer Orders\n2 vCPU • 3 GiB\n(2 replicas)"];
+  P09 [label="P09 | Payment Reconciliation\n1 vCPU • 2 GiB\n(2 replicas)"];
+  P10 [label="P10 | Dispatch & Routing\n2 vCPU • 3 GiB\n(2 replicas)"];
+ }
+ subgraph cluster_3 {label="AI & intelligence";color="#acc4d5";style="rounded,dashed";bgcolor="#f2edfc";
+  P11 [label="P11 | AI Advisory Gateway\n1.5 vCPU • 3 GiB\n(2 replicas)"];
+  P12 [label="P12 | Analytics & Forecast\n2 vCPU • 4 GiB\n(1 replicas)"];
+ }
+ subgraph cluster_4 {label="Communications";color="#acc4d5";style="rounded,dashed";bgcolor="#f0f3f5";
+  P13 [label="P13 | Notifications\n1 vCPU • 1.5 GiB\n(2 replicas)"];
+ }
+ X01 [shape=box,label="X01 | Farmer mobile
+(offline)",fillcolor="#f3f5fa",style="rounded,filled"];
+ X02 [shape=box,label="X02 | Buyer portal",fillcolor="#f3f5fa",style="rounded,filled"];
+ X03 [shape=box,label="X03 | External LLM API",fillcolor="#f3f5fa",style="rounded,filled"];
+ X04 [shape=box,label="X04 | Document OCR API",fillcolor="#f3f5fa",style="rounded,filled"];
+ S01 [shape=cylinder,label="S01 | SQL store",fillcolor="#fbf6e8",style="rounded,filled"];
+ S02 [shape=cylinder,label="S02 | Object store",fillcolor="#fbf6e8",style="rounded,filled"];
+ S03 [shape=cylinder,label="S03 | Message queue",fillcolor="#fbf6e8",style="rounded,filled"];
+ X01 -> P01 [label="F01 · 1.45 Mb/s",color="#007e85",constraint=true];
+ X02 -> P01 [label="F02 · 1.81 Mb/s",color="#007e85",constraint=true];
+ P01 -> P02 [label="F03 · 0.36 Mb/s",color="#8595a5",constraint=false];
+ P01 -> P03 [label="F04 · 0.06 Mb/s",color="#8595a5",constraint=false];
+ P01 -> P04 [label="F05 · 1.45 Mb/s",color="#007e85",constraint=true];
+ P04 -> P05 [label="F06 · 0.54 Mb/s",color="#007e85",constraint=true];
+ P05 -> P06 [label="F07 · 1.55 Mb/s",color="#007e85",constraint=true];
+ P06 -> P05 [label="F08 · 0.01 Mb/s",color="#8595a5",constraint=false];
+ P05 -> P07 [label="F09 · 0.24 Mb/s",color="#8595a5",constraint=false];
+ P01 -> P08 [label="F10 · 0.54 Mb/s",color="#007e85",constraint=true];
+ P08 -> P07 [label="F11 · 0.36 Mb/s",color="#8595a5",constraint=true];
+ P08 -> P09 [label="F12 · 0.07 Mb/s",color="#8595a5",constraint=true];
+ P08 -> P10 [label="F13 · 0.15 Mb/s",color="#8595a5",constraint=true];
+ P10 -> P13 [label="F14 · 0.05 Mb/s",color="#8595a5",constraint=false];
+ P09 -> P13 [label="F15 · 0.04 Mb/s",color="#8595a5",constraint=false];
+ P01 -> P11 [label="F16 · 0.24 Mb/s",color="#8595a5",constraint=true];
+ P11 -> X03 [label="F17 · 0.54 Mb/s",color="#007e85",constraint=true];
+ P11 -> P05 [label="F18 · 0.12 Mb/s",color="#8595a5",constraint=false];
+ P05 -> P12 [label="F19 · 0.08 Mb/s",color="#8595a5",constraint=false];
+ P08 -> P12 [label="F20 · 0.02 Mb/s",color="#8595a5",constraint=false];
+ P12 -> P11 [label="F21 · 0.01 Mb/s",color="#8595a5",constraint=false];
+ P12 -> P01 [label="F22 · 0.07 Mb/s",color="#8595a5",constraint=false];
+ P06 -> X04 [label="F23 · 1.55 Mb/s",color="#007e85",constraint=false];
+ P03 -> P13 [label="F24 · 0.01 Mb/s",color="#8595a5",constraint=false];
+ P11 -> P13 [label="F25 · 0.01 Mb/s",color="#8595a5",constraint=false];
+ P05 -> S01 [label="F26 · 0.24 Mb/s",color="#8595a5",constraint=false];
+ P08 -> S01 [label="F27 · 0.36 Mb/s",color="#8595a5",constraint=false];
+ P06 -> S02 [label="F28 · 1.55 Mb/s",color="#007e85",constraint=false];
+ P04 -> S03 [label="F29 · 1.45 Mb/s",color="#007e85",constraint=false];
+ P02 -> S01 [label="F30 · 0.24 Mb/s",color="#8595a5",constraint=false];
+}
